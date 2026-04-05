@@ -5,22 +5,39 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:backend": "tsx backend/server.ts",
+    "dev:full": "concurrently -n frontend,backend -c blue,green \"npm run dev\" \"npm run dev:backend\"",
     "build": "vite build",
-    "preview": "vite preview"
+    "build:server": "tsc -p backend/tsconfig.build.json",
+    "build:all": "npm run build && npm run build:server",
+    "start": "node backend/dist/server.js",
+    "docker:build:cloudrun": "docker build --platform linux/amd64 -t signature-packet-ide .",
+    "deploy:cloud-run": "bash scripts/deploy-cloud-run.sh",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
-    "lucide-react": "^0.555.0",
-    "uuid": "^13.0.0",
     "@google/genai": "^1.30.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jszip": "^3.10.1",
+    "lucide-react": "^0.555.0",
+    "multer": "^2.1.1",
+    "pdf-lib": "^1.17.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "pdf-lib": "^1.17.1",
-    "jszip": "^3.10.1"
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.1.0",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^9.2.1",
+    "tsx": "^4.21.0",
     "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "vitest": "^4.0.18"
   }
 }

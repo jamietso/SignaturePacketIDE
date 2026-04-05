@@ -48,7 +48,7 @@ const SignatureCard: React.FC<SignatureCardProps> = ({
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 uppercase tracking-wide">
              <FileText size={14} />
-             <span className="truncate max-w-[200px]" title={page.documentName}>{page.documentName}</span>
+             <span className="break-words whitespace-normal" title={page.documentName}>{page.documentName}</span>
           </div>
           <button 
             onClick={() => onDelete(page.id)}

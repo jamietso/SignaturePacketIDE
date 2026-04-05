@@ -1,0 +1,14 @@
+node_modules
+dist
+backend/dist
+.git
+.gitignore
+.env
+.env.*
+*.md
+.DS_Store
+coverage
+.vscode
+.cursor
+**/*.test.ts
+**/*.spec.ts
